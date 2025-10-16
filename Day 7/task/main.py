@@ -12,9 +12,15 @@ guess= input("Guess a letter: ").lower()
 
 # TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word. Print "Right" if it
 #  is, "Wrong" if it's not.
-
-for letter in range(0,len(chosen_word)):
-    if guess in chosen_word:
+#MY METHOD
+# for letter in range(0,len(chosen_word)):
+#     if guess in chosen_word:
+#         print("Right")
+#     else:
+#         print("Wrong")
+#METHOD 2
+for letter in chosen_word:
+    if guess== chosen_word:
         print("Right")
     else:
         print("Wrong")
