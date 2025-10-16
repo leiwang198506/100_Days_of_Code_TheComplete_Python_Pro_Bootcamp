@@ -1,26 +1,27 @@
 import random
-
 word_list = ["aardvark", "baboon", "camel"]
 
-# TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word. Then print it.
-chosen_word= random.choice(word_list)
+chosen_word = random.choice(word_list)
 print(chosen_word)
 
-# TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
-guess= input("Guess a letter: ").lower()
+placeholder = ""
+word_length = len(chosen_word)
+for position in range(word_length):
+    placeholder += "_"
+print(placeholder)
 
+# TODO-1: - Use a while loop to let the user guess again.
+display = ""
+while display == chosen_word:
+    guess = input("Guess a letter: ").lower()
+    for letter in chosen_word:
+         if letter == guess:
+             display += letter
+         else:
+             display += "_"
 
-# TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word. Print "Right" if it
-#  is, "Wrong" if it's not.
-#MY METHOD
-# for letter in range(0,len(chosen_word)):
-#     if guess in chosen_word:
-#         print("Right")
-#     else:
-#         print("Wrong")
-#METHOD 2
-for letter in chosen_word:
-    if guess== chosen_word:
-        print("Right")
-    else:
-        print("Wrong")
+    print(display)
+#
+# # TODO-2: Change the for loop so that you keep the previous correct letters in display.
+#
+
