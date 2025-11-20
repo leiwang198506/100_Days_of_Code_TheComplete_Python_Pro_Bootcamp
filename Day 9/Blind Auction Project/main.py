@@ -2,35 +2,40 @@
 # TODO-2: Save data into dictionary {name: price}
 # TODO-3: Whether if new bids need to be added
 # TODO-4: Compare bids in dictionary
+from art import logo
+print(logo)
 
+def find_highest_bidder(bidding_dictionary):
+    highest_bid = 0
+    winner=""
+    for bidder in bidding_dictionary:
+        bid_amount=(bidding_dictionary[bidder])
+        if bid_amount> highest_bid:
+            highest_bid=bid_amount
+            winner=bidder
+    print("\n" * 100)
+    print(f"The winner is {winner} with a bid of ${highest_bid}")
 
-import art
-print(art.logo)
-bid_info={}
-name=input("What is your name?\n")
-price=int(input("What is your bid?\n"))
-bid_info[name]=price
-loop_option=input("Are there any other bidders? Type 'yes ' or 'no'\n")
+bids={}
 continue_bid = True
 while continue_bid:
-    if loop_option=="yes":
+    name = input("What is your name?:\n")
+    price_input = input("What is your bid?:\n $")
+    while not price_input.isdigit(): #control the bid number input to make sure it is only integer
+        #isdigit() return True if all characters are digits.
+        print("Invalid input! Please enter a whole number (no text, no decimals).")
+        price_input = input("What is your bid?:\n $")
+    price=int(price_input)
+    bids[name] = price
+    should_continue = input("Are there any other bidders? Type 'yes' or 'no'\n").lower()
+    while should_continue != "yes" and should_continue != "no": #control if users input everything else but yes or no.
+        should_continue = input("Sorry I didn't understand. Please type 'yes' or 'no'\n").lower()
+    if should_continue == "yes":
         print("\n" * 100)
-        name = input("What is your name?\n")
-        price = int(input("What is your bid?\n"))
-        bid_info[name] = price
-        loop_option = input("Are there any other bidders? Type 'yes ' or 'no'\n")
-    else:
+    elif should_continue == "no":
         continue_bid = False
-winner_bid=0
-for name, price in bid_info.items():
-    if price> winner_bid:
-        winner_bid= price
+        find_highest_bidder(bids)
 
-revised_bid_info= {v:k for k,v in bid_info.items()}
-winner_name=revised_bid_info[winner_bid]
-
-
-print(f"The winner is {winner_name} with a bid of {winner_bid}")
 
 
 
