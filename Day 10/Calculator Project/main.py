@@ -43,11 +43,12 @@ def calculator():
         choice = input(
             f"Type 'y' to continue calculating with {result} or type 'n' to start a new calculation:")
         if choice == "y":
-            first_number= result
+            n1= result
         elif choice == "n":
             print("\n"*100)
             calculator()
         else:
+
             continue_calculate= False
 
 calculator()
