@@ -45,10 +45,12 @@ def calculator():
         if choice == "y":
             n1= result
         elif choice == "n":
+            continue_calculate= False
             print("\n"*100)
             calculator()
         else:
-
             continue_calculate= False
+            print("End of Calculation.")
+
 
 calculator()
